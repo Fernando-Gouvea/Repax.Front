@@ -1,0 +1,113 @@
+/* Importação da Fonte Roboto */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+:root {
+  /* Paleta Estratégica UX */
+  --repax-red: #e31d24;
+  --repax-red-hover: #c1181f;
+  --repax-blue: #0056b3;
+  --repax-dark: #1e293b; /* Azul Antracite (Moderno) */
+  --repax-gray-bg: #f1f5f9; /* Cinza Profissional */
+  --repax-border: #e2e8f0; /* Bordas suaves */
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--repax-gray-bg);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Estilização de Scrollbar para elegância */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--repax-red);
+}
+
+/* --- UTILITÁRIOS DE BOTÕES E LINKS --- */
+button.primary {
+  background-color: var(--repax-red);
+  color: white;
+  transition: var(--transition);
+}
+
+button.primary:hover {
+  background-color: var(--repax-red-hover);
+  transform: translateY(-1px);
+}
+
+a {
+  color: var(--repax-blue);
+  text-decoration: none;
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes progress-flow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-progress-flow {
+  animation: progress-flow 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+/* --- ESTILOS PARA INPUTS --- */
+input:focus {
+  border-color: var(--repax-red) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(227, 29, 36, 0.1);
+}
+
+/* Ajuste nos marcadores de pneus (conforme logo) */
+.tire-status-good {
+  background-color: #28a745; /* Verde segurança */
+}
+
+/* Badge de Oportunidade seguindo o Vermelho RepaX */
+.badge-opportunity {
+  background-color: rgba(227, 29, 36, 0.1);
+  color: var(--repax-red);
+  font-weight: 700;
+}
