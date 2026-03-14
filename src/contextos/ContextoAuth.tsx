@@ -22,9 +22,10 @@ export function ProvedorAuth({ children }: { children: ReactNode }) {
     }
     // Login demo: qualquer email/senha funciona
     setUsuario({
-      id: "demo",
+      id: 1,
       nome: "Usuário Demo",
       email,
+      senha: "", // Adicione esta linha (mesmo que vazia)
       telefone: "(11) 90000-0000",
       cargo: "vendedor",
       ativo: true,

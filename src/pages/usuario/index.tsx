@@ -221,7 +221,8 @@ export default function PaginaUsuarios() {
       return;
     }
     const novo: Usuario = {
-      id: String(Date.now()),
+      id: Date.now(),
+      senha: "",
       ...novoUsuario,
       ativo: true,
       criadoEm: new Date().toISOString(),

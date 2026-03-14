@@ -1,7 +1,7 @@
 // src/core/api/httpClient.ts
 import axios from "axios";
-import { queryClient } from "../../core/query/client";
-import { TokenManager } from "../../infra/common/TokenManager";
+import { TokenManager } from "../infra/common/TokenManager";
+import { queryClient } from "../core/query/client";
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL, // Sua URL base

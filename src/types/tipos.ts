@@ -18,8 +18,9 @@ export interface Veiculo {
 }
 
 export interface Usuario {
-  id: string;
+  id: number;
   nome: string;
+  senha: string;
   email: string;
   telefone: string;
   cargo: "admin" | "vendedor";

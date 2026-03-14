@@ -1,3 +1,5 @@
+import type { Usuario } from "../types/tipos";
+
 // Definição de interface para garantir que o TypeScript reconheça as propriedades
 export interface Veiculo {
   id: number;
@@ -264,6 +266,18 @@ export const veiculosMock: Veiculo[] = [
   },
 ];
 
-export const usuariosMock = [
-  { id: 1, email: "admin@repax.com", senha: "123", nome: "Admin" },
+// export const usuariosMock = [
+//   { id: 1, email: "admin@repax.com", senha: "123", nome: "Admin" },
+// ];
+export const usuariosMock: Usuario[] = [
+  {
+    id: 1, // Se o seu tipo Usuario diz que ID é string, mude para "1"
+    email: "admin@teste.com",
+    senha: "123",
+    nome: "Administrador",
+    telefone: "(11) 99999-9999", // Adicione os campos que faltam
+    cargo: "admin",
+    ativo: true,
+    criadoEm: new Date().toISOString()
+  }
 ];
