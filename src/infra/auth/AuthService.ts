@@ -6,7 +6,7 @@ import type {
   AuthResponse,
   User,
 } from "../../domain/auth/types";
-import { env } from "../../api/env";
+import { env } from "../../core/config/env";
 import { api } from "../../api/api";
 
 
