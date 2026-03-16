@@ -1,34 +1,33 @@
 // src/presentation/layouts/ProtectedLayout.tsx
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { useAuthUser } from "../../application/auth/queries/useAuthUser";
-import { TokenManager } from "../../infra/common/TokenManager";
-import { UserHeader } from "../components/UserHeader";
+import styled from "styled-components";
+import { Header } from "../../components/Header";
+
+const MainContent = styled.main`
+  min-height: calc(100vh - 65px);
+  background-color: #f8fafc;
+  width: 100%;
+`;
 
 export const ProtectedLayout = () => {
-  const { data: user, isLoading, isError } = useAuthUser();
   const location = useLocation();
-  const hasToken = !!TokenManager.getAccessToken();
 
-  // 1. Enquanto carrega e existe token, não decide nada (o GlobalLoader no AppProviders cuida do visual)
-  if (isLoading && hasToken) return null;
+  // Recupera as informações do usuário logado
+  const userType = localStorage.getItem("@Repax:userType");
+  const isAuthenticated = !!userType;
 
-  // 2. Se não tem token ou deu erro na busca do user (token expirado), manda para login
-  if (!hasToken || isError || (!isLoading && !user)) {
-    return <Navigate to="/" state={{ from: location }} replace />;
+  // Se não estiver logado, manda para o login salvando a página que ele tentou acessar
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return (
-    <div className="app-layout">
-      <header className="main-header">
-        <UserHeader />
-      </header>
-
-      <div className="flex">
-        {/* <Sidebar /> - Local para sua futura Sidebar */}
-        <main className="content p-6 w-full">
-          <Outlet />
-        </main>
-      </div>
-    </div>
+    <>
+      <Header />
+      <MainContent>
+        {/* O Outlet renderiza a página específica da rota (Dashboard, Gestão, etc) */}
+        <Outlet />
+      </MainContent>
+    </>
   );
 };
